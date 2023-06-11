@@ -1,0 +1,57 @@
+<div class="row">
+  <div class="col-md-6">
+      <div class="card">
+          <div class="card-body">
+              <h4 class="card-title">Vacants</h4>
+              <h6 class="card-subtitle">Vacants Information</h6>
+              <form class=" form-material form-horizontal-10" [formGroup]="PuestoForm" (ngSubmit)="savePuesto()">
+                  <div class="form-group">
+                      <label for="exampleInputuname">Name</label>
+                      <div class="input-group">
+                          <input type="text" class="form-control" formControlName="nombre" id="exampleInputuname" placeholder="Name">
+                      </div>
+                      <span *ngIf="PuestoForm.controls['nombre'].getError('required') && PuestoForm.controls['nombre'].touched" class="form-text text-danger">Field required</span>
+                  </div>
+                  <div class="form-group">
+                      <label for="exampleInputEmail1">Risk Level</label>
+                      <div class="input-group">
+                          <select name="" id="" formControlName="NivelRiesgo" class="form-control">
+                              <option value="">Select Level</option>
+                              <option value="Bajo">Bajo</option>
+                              <option value="Medio">Medio</option>
+                              <option value="Alto">Alto</option>
+                          </select>
+                      </div>
+                      <span *ngIf="PuestoForm.controls['NivelRiesgo'].getError('required') && PuestoForm.controls['NivelRiesgo'].touched" class="form-text text-danger">Field required</span>
+
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputuname">Min Salary</label>
+                    <div class="input-group">
+
+                        <input type="number" class="form-control" formControlName="SalarioMin" id="exampleInputuname" placeholder="Salary Min">
+                    </div>
+                    <span *ngIf="PuestoForm.controls['SalarioMin'].getError('required') && PuestoForm.controls['SalarioMin'].touched" class="form-text text-danger">Field required</span>
+                </div>
+
+                <div class="form-group">
+                  <label for="exampleInputuname">Max Salary</label>
+                  <div class="input-group">
+
+                      <input type="number" class="form-control" formControlName="SalarioMax" id="exampleInputuname" placeholder="Salary Max">
+                  </div>
+                  <span *ngIf="PuestoForm.controls['SalarioMax'].getError('required') && PuestoForm.controls['SalarioMax'].touched" class="form-text text-danger">Field required</span>
+              </div>
+
+                  <button type="submit" [disabled]="PuestoForm.invalid" class="btn btn-success waves-effect waves-light m-r-10"><i class="fa fa-save"> Save
+                      </i></button>
+
+                      <button class="btn btn-danger" [routerLink]="['/dashboard','puesto' ]"><i class="fa fa-backward">Cancel</i></button>
+
+
+              </form>
+          </div>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-md-6">
+      <div class="card">
+          <div class="card-body">
+              <h4 class="card-title">Language</h4>
+              <h6 class="card-subtitle">Update Information</h6>
+              <form class=" form-material form-horizontal-10" [formGroup]="IdiomaForm" (ngSubmit)="saveIdioma()">
+
+                  <div class="form-group">
+                      <label for="exampleInputuname">Name</label>
+                      <div class="input-group">
+
+                          <input type="text" class="form-control" formControlName="nombre" id="exampleInputuname" placeholder="Name">
+                      </div>
+                      <span *ngIf="IdiomaForm.controls['nombre'].getError('required') && IdiomaForm.controls['nombre'].touched" class="form-text text-danger">Field required</span>
+
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputuname">Description</label>
+                    <div class="input-group">
+
+                        <textarea type="text" rows="5" class="form-control" formControlName="descripcion" id="exampleInputuname" placeholder="Description"></textarea>
+                    </div>
+                    <span *ngIf="IdiomaForm.controls['descripcion'].getError('required') && IdiomaForm.controls['descripcion'].touched" class="form-text text-danger">Field required</span>
+                </div>
+
+                  <button type="submit" [disabled]="IdiomaForm.invalid" class="btn btn-success waves-effect waves-light m-r-10"><i class="fa fa-save"> Save
+                      </i></button>
+
+                      <button class="btn btn-danger" [routerLink]="['/dashboard','idioma' ]"><i class="fa fa-backward">Cancel</i></button>
+
+              </form>
+          </div>
+      </div>
+  </div>
+</div>

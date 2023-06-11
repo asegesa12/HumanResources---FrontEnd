@@ -6,6 +6,9 @@ import { NopagefoundComponent } from './nopagefound/nopagefound.component';
 import { AppRoutingModule } from './app-routing.module';
 import { PagesModule } from './pages/pages.module';
 import { AuthModule } from './auth/auth.module';
+import { RouterModule } from '@angular/router';
+
+
 
 
 @NgModule({
@@ -13,12 +16,13 @@ import { AuthModule } from './auth/auth.module';
     AppComponent,
     NopagefoundComponent,
 
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     PagesModule,
-    AuthModule
+    AuthModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

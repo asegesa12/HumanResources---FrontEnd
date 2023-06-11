@@ -2,27 +2,38 @@ import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { IdiomaComponent } from './idioma/idioma.component';
-import { PuestoComponent } from './puesto/puesto.component';
-import { CandidatosComponent } from './candidatos/candidatos.component';
-import { CapacitacionesComponent } from './capacitaciones/capacitaciones.component';
-import { CompetenciasComponent } from './competencias/competencias.component';
-import { EmpleadoComponent } from './empleado/empleado.component';
+import { IdiomaComponent } from './mantenimientos/idioma/idioma.component';
+import { PuestoComponent } from './mantenimientos/puesto/puesto.component';
+import { CandidatosComponent } from './mantenimientos/candidatos/candidatos.component';
+import { CapacitacionesComponent } from './mantenimientos/capacitaciones/capacitaciones.component';
+import { CompetenciasComponent } from './mantenimientos/competencias/competencias.component';
+import { EmpleadoComponent } from './mantenimientos/empleado/empleado.component';
+import { AuthGuard } from '../guards/auth.guard';
+import { UsuaropsComponent } from './mantenimientos/usuarops/usuarops.component';
+import { IdiomasComponent } from './mantenimientos/idioma/idiomas.component';
+import { CompetenciaComponent } from './mantenimientos/competencias/competencia.component';
+import { PuestosComponent } from './mantenimientos/puesto/puestos.component';
+import { CapacitacionComponent } from './mantenimientos/capacitaciones/capacitacion.component';
 
 
 
 const routes: Routes = [
 
   { path:'dashboard',
-  component: PagesComponent,
+  component: PagesComponent, canActivate: [AuthGuard],
     children: [
-      { path: '', component: DashboardComponent},
-      { path: 'idioma', component: IdiomaComponent},
-      { path: 'puesto', component: PuestoComponent},
-      { path: 'capacitacion', component: CapacitacionesComponent},
-      { path: 'competencia', component: CompetenciasComponent},
-      { path: 'candidato', component: CandidatosComponent},
-      { path: 'empleado', component: EmpleadoComponent},
+      { path: '', component: DashboardComponent, data: {titulo: 'Dashboard'}},
+      { path: 'idioma', component: IdiomaComponent, data: {titulo: 'idioma'}},
+      { path: 'idiomas/:id', component: IdiomasComponent, data: {titulo: 'idiomas'}},
+      { path: 'puesto', component: PuestoComponent, data: {titulo: 'puesto'}},
+      { path: 'puestos/:id', component: PuestosComponent, data: {titulo: 'puesto'}},
+      { path: 'capacitacion', component: CapacitacionesComponent, data: {titulo: 'capacitacion'}},
+      { path: 'capacitaciones/:id', component: CapacitacionComponent, data: {titulo: 'capacitacion'}},
+      { path: 'competencia', component: CompetenciasComponent, data: {titulo: 'competencia'}},
+      { path: 'competencias/:id', component: CompetenciaComponent, data: {titulo: 'competencia'}},
+      { path: 'candidato', component: CandidatosComponent, data: {titulo: 'candidato'}},
+      { path: 'empleado', component: EmpleadoComponent, data: {titulo: 'empleado'}},
+      { path: 'usuario', component: UsuaropsComponent, data: {titulo: 'Usuarios'}}
 
     ]
   },

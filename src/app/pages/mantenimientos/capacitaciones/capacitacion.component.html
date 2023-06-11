@@ -1,0 +1,65 @@
+<div class="row">
+  <div class="col-md-6">
+      <div class="card">
+          <div class="card-body">
+              <h4 class="card-title">Training</h4>
+              <h6 class="card-subtitle">Training Information</h6>
+              <form class=" form-material form-horizontal-10" [formGroup]="CapacitacionForm" (ngSubmit)="SaveCap()">
+                  <div class="form-group">
+                      <label for="exampleInputuname">Description</label>
+                      <div class="input-group">
+
+                          <input type="text" class="form-control" formControlName="descripcion" id="exampleInputuname" placeholder="Description">
+                      </div>
+                      <span *ngIf="CapacitacionForm.controls['descripcion'].getError('required') && CapacitacionForm.controls['descripcion'].touched" class="form-text text-danger">Field required</span>
+                  </div>
+                  <div class="form-group">
+                      <label for="exampleInputEmail1">Training Level</label>
+                      <div class="input-group">
+                          <select name="" id="" formControlName="NivelCapacitacion" class="form-control">
+                              <option value="">Select Level</option>
+                              <option value="Grado">Grado</option>
+                              <option value="Post-Grado">Post-Grado</option>
+                              <option value="Maestria Doctorado">Maestria Doctorado</option>
+                              <option value="Tecnico">Tecnico</option>
+                              <option value="Gestion">Gestion</option>
+                          </select>
+                      </div>
+                      <span *ngIf="CapacitacionForm.controls['NivelCapacitacion'].getError('required') && CapacitacionForm.controls['NivelCapacitacion'].touched" class="form-text text-danger">Field required</span>
+
+                  </div>
+
+                  <div class="form-group row">
+                    <label class="control-label text-right col-md-3">Start Date</label>
+                    <div class="col-md-9">
+                        <input type="date" class="form-control" formControlName="FechaDesde" placeholder="dd/mm/yyyy">
+                    </div>
+                    <span *ngIf="CapacitacionForm.controls['FechaDesde'].getError('required') && CapacitacionForm.controls['FechaDesde'].touched" class="form-text text-danger">Field required</span>
+                </div>
+
+                <div class="form-group row">
+                  <label class="control-label text-right col-md-3">End Date</label>
+                  <div class="col-md-9">
+                      <input type="date" class="form-control" formControlName="fechaHasta" placeholder="dd/mm/yyyy">
+                  </div>
+                  <span *ngIf="CapacitacionForm.controls['fechaHasta'].getError('required') && CapacitacionForm.controls['fechaHasta'].touched" class="form-text text-danger">Field required</span>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputuname">Institution</label>
+                <div class="input-group">
+
+                    <input type="text" class="form-control" formControlName="Institucion" id="exampleInputuname" placeholder="Institution">
+                </div>
+                <span *ngIf="CapacitacionForm.controls['Institucion'].getError('required') && CapacitacionForm.controls['Institucion'].touched" class="form-text text-danger">Field required</span>
+            </div>
+
+                  <button type="submit" [disabled]="CapacitacionForm.invalid" class="btn btn-success waves-effect waves-light m-r-10"><i class="fa fa-save"> Save
+                      </i></button>
+                      <button class="btn btn-danger" [routerLink]="['/dashboard','capacitacion' ]"><i class="fa fa-backward">Cancel</i></button>
+
+              </form>
+          </div>
+      </div>
+  </div>
+</div>

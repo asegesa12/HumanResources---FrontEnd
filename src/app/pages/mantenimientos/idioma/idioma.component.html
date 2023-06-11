@@ -1,0 +1,92 @@
+<div class="row">
+  <div class="col-12">
+      <div class="card">
+          <div class="card-body">
+              <form class="form-material">
+                  <input type="text" #txtBuscar (keyup)="buscar(txtBuscar.value)" class="form-control form-control-line" placeholder="Search">
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="row fadeIn fast" *ngIf="loading">
+  <div class="col-12">
+      <div class="alert alert-success text-center" role="alert">
+          <h4 class="alert-heading">Loading</h4>
+          <i class="fa fa-spin fa-refresh fa-2x"></i>
+          <p class="mb-0">Por favor espere...</p>
+      </div>
+  </div>
+</div>
+
+<div class="row fadeIn fast" *ngIf="!loading">
+  <div class="col-12">
+      <div class="card">
+          <div class="card-body">
+
+              <div class="row">
+                  <div class="col-8">
+
+                      <h4 class="card-title">Language</h4>
+                      <h6 class="card-subtitle">  Records: {{total}}
+                      </h6>
+                  </div>
+                  <div class="col">
+                      <div class="text-right">
+                          <button routerLink="/dashboard/idiomas/nuevo" class="btn btn-primary">
+                              <i class="fa fa-medic-o">
+                                  Create Language
+                              </i>
+                          </button>
+                      </div>
+                  </div>
+              </div>
+
+
+
+
+
+              <div class="table-responsive">
+                  <table class="table table-bordered">
+                      <thead>
+                          <tr>
+
+                              <th>Name</th>
+                              <th>Description</th>
+
+                              <th class="text-nowrap w100">Action</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr *ngFor="let idioma of idiomas">
+
+                              <td>{{idioma.nombre}}</td>
+                              <td>{{idioma.descripcion}}</td>
+                              <td class="text-nowrap text-center">
+                                  <a [routerLink]="['/dashboard','idiomas', idioma.uid ]" data-toggle="tooltip" data-original-title="Edit"> <i class="cursor fa fa-pencil text-inverse m-r-10"></i> </a>
+                                  <a (click)="DeleteIdiom(idioma)" data-toggle="tooltip" data-original-title="Delete">
+                                      <i class=" fa fa-close text-danger cursor"></i> </a>
+                              </td>
+                          </tr>
+
+                      </tbody>
+                  </table>
+              </div>
+
+              <div class="row fadeIn fast" *ngIf="idiomas.length === 0">
+                <div class="col-12">
+                    <div class="alert alert-info text-center">
+                        <p class="mb-0">No results</p>
+
+                    </div>
+                </div>
+            </div>
+
+              <button [disabled]="desde < 5" (click)="paginacion(-5)" class="btn btn-secondary mr-2">Anterior</button>
+              <button [disabled]="desde + 5 >= total" (click)="paginacion(5)" class="btn btn-secondary">Siguiente</button>
+
+          </div>
+      </div>
+  </div>
+</div>
